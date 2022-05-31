@@ -23,7 +23,7 @@ def createMedalTable(results):
     for eventResult in results:
         for podiumPos in eventResult["podium"]:
             countryName = podiumPos[2:]
-            countryPosition = int(podiumPos[0:1])
+            countryPosition = int(podiumPos[0])
             pointsForTable = 4 - countryPosition
 
             medalTable.setdefault(countryName, 0)
