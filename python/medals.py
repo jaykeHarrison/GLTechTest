@@ -18,27 +18,16 @@ medalResults = [
 ]
 
 def createMedalTable(results):
-    # Use the results object above to create a medal table
-    # The winner gets 3 points, second place 2 points and third place 1 point
-
-    # Create empty medal table
     medalTable = {}
 
-    # Loop through array of event result dictionaries
     for eventResult in results:
-        # For each result, loop through its podium result
         for podiumPos in eventResult["podium"]:
-            # extract the country from the string
-            country = podiumPos[2:]
-            # extract the position from the string
-            position = int(podiumPos[0:1])
-            # calculate the points
-            points = 4 - position
+            countryName = podiumPos[2:]
+            countryPosition = int(podiumPos[0:1])
+            pointsForTable = 4 - countryPosition
 
-            # if the country doesn't exist in the dictionary, add it with a default value one
-            medalTable.setdefault(country, 0)
-            # increment the points for the current country
-            medalTable[country] += points
+            medalTable.setdefault(countryName, 0)
+            medalTable[countryName] += pointsForTable
 
     return medalTable
 
